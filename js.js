@@ -8,7 +8,7 @@ dragItems.forEach((item) => {
   });
   item.addEventListener("touchmove", (e) => {
     // state = !state;
-    event.preventDefault();
+    e.preventDefault();
   });
 });
 dropBoxes.forEach((item) => {
