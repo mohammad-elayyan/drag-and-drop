@@ -71,6 +71,7 @@ interact(".drag-drop").draggable({
 });
 
 function dragMoveListener(event) {
+  event.preventDefault();
   var target = event.target,
     // keep the dragged position in the data-x/data-y attributes
     x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx,
