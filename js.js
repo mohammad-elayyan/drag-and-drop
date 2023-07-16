@@ -6,8 +6,9 @@ dragItems.forEach((item) => {
   item.addEventListener("mouseup", (e) => {
     // state = !state;
   });
-  item.addEventListener("touchend", (e) => {
+  item.addEventListener("touchmove", (e) => {
     // state = !state;
+    event.preventDefault();
   });
 });
 dropBoxes.forEach((item) => {
@@ -71,7 +72,6 @@ interact(".drag-drop").draggable({
 });
 
 function dragMoveListener(event) {
-  event.preventDefault();
   var target = event.target,
     // keep the dragged position in the data-x/data-y attributes
     x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx,
