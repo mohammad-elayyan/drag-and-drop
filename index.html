@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        background-color: #1b1b1b;
+    }
+
+    .drag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 95vh;
+    }
+
+    .drag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 95vh;
+    }
+
+    .drag .items-list {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        margin: 20px 0;
+    }
+
+    .drag .list {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    .drag .drag-box {
+        background: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        width: 200px;
+    }
+
+    .drag .drag-item {
+        /* width: 80%; */
+        min-width: 80px;
+        background: #928cff;
+        padding: 10px;
+        margin: 4px;
+        cursor: move;
+    }
+
+    .drag .list {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: flex-start;
+        direction: rtl;
+    }
+
+    .drag .drag-box {
+        background: #eaeaea;
+        padding: 10px 20px;
+        border-radius: 10px;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .drag .drag-item {
+        background: #928cff;
+        padding: 0 10px;
+        margin: 4px;
+        cursor: move;
+    }
+
+    #outer-dropzone {
+        height: 140px;
+    }
+
+    #inner-dropzone {
+        height: 80px;
+    }
+
+    .dropzone {
+        background-color: #bfe4ff;
+        border: dashed 4px transparent;
+        border-radius: 4px;
+        margin: 10px auto 30px;
+        padding: 10px;
+        width: 80%;
+        transition: background-color 0.3s;
+    }
+
+    .drop-active {
+        border-color: #aaa;
+    }
+
+    .drop-target {
+        background-color: #29e;
+        border-color: #fff;
+        border-style: solid;
+    }
+
+    /* .drag-drop {
+        display: inline-block;
+        min-width: 40px;
+        padding: 2em 0.5em;
+        margin: 1rem 0 0 1rem;
+
+        color: #fff;
+        background-color: #29e;
+        border: solid 2px #fff;
+
+        touch-action: none;
+        transform: translate(0px, 0px);
+
+        transition: background-color 0.3s;
+    } */
+
+    .drag-drop.can-drop {
+        color: #000;
+        background-color: #4e4;
+    }
+</style>
+
+<body>
+    <div class="drag">
+        <div class="items-list">
+
+        </div>
+        <div class="list">
+
+            <div id="t4" class="drag-box">
+                <h2>Box</h2>
+            </div>
+            <div id="t3" class="drag-box">
+                <h2>Box</h2>
+            </div>
+            <div id="t2" class="drag-box">
+                <h2>Box</h2>
+            </div>
+            <div id="t1" class="drag-box">
+                <h2>Box</h2>
+            </div>
+        </div>
+
+        <div id="no-drop" class="drag-drop"> #no-drop </div>
+        <p class="drag-drop drag-item" draggable="true">2</p>
+        <p class="drag-drop drag-item" draggable="true">3</p>
+        <p class="drag-drop drag-item" draggable="true">4</p>
+        <p id="yes-drop" class="drag-drop drag-item" draggable="true">1</p>
+
+        <!-- <div id="yes-drop" class="drag-drop"> #yes-drop </div> -->
+
+        <!-- <div id="outer-dropzone" class="dropzone">
+            #outer-dropzone
+            <div id="inner-dropzone" class="dropzone">#inner-dropzone</div>
+        </div> -->
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="./js.js"></script>
+</body>
+
+</html>
