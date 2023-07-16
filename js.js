@@ -1,6 +1,7 @@
 let state = true;
 const dragItems = document.querySelectorAll(".drag-item");
 const dropBoxes = document.querySelectorAll(".drag-box");
+let dragItem = "";
 
 dragItems.forEach((item) => {
   item.addEventListener("mouseup", (e) => {
@@ -10,10 +11,10 @@ dragItems.forEach((item) => {
     // state = !state;
     e.preventDefault();
   });
-});
-dropBoxes.forEach((item) => {
-  item.addEventListener("mousemove", (e) => {
-    console.log(item.id);
+  dropBoxes.forEach((box) => {
+    item.addEventListener("drop", (e) => {
+      console.log(box.id);
+    });
   });
 });
 
@@ -24,7 +25,6 @@ interact(".drag-box").dropzone({
   overlap: 0.75,
 
   // listen for drop related events:
-
   ondropactivate: function (event) {
     // add active dropzone feedback
     event.target.classList.add("drop-active");
@@ -36,7 +36,7 @@ interact(".drag-box").dropzone({
     // feedback the possibility of a drop
     dropzoneElement.classList.add("drop-target");
     draggableElement.classList.add("can-drop");
-    draggableElement.textContent = "Dragged in";
+    // draggableElement.textContent = "Dragged in";
   },
   ondragleave: function (event) {
     // remove the drop feedback style
@@ -46,10 +46,11 @@ interact(".drag-box").dropzone({
     state = true;
   },
   ondrop: function (event) {
-    event.relatedTarget.textContent = "Dropped";
+    // event.relatedTarget.textContent = "Dropped";
     // dragMoveListener(event);
     // state = state ? false : false;
     state = false;
+    dragMoveListener(event);
   },
   ondropdeactivate: function (event) {
     // remove active dropzone feedback
@@ -84,6 +85,19 @@ function dragMoveListener(event) {
   // update the posiion attributes
   target.setAttribute("data-x", x);
   target.setAttribute("data-y", y);
+  if (target.classList.contains("drag-item")) {
+    dragItem = target;
+  }
+  if (event.type == "drop") {
+    if (event.currentTarget.id.charAt(1) == dragItem.id.charAt(1)) {
+      event.currentTarget.append(dragItem);
+      dragEndListener(event);
+      dragItem.textContent = "Dropped";
+    } else {
+      dragEndListener(event);
+      dragItem.classList.remove("can-drop");
+    }
+  }
 }
 
 function dragEndListener(event) {
